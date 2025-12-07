@@ -1,0 +1,26 @@
+---
+type Props = {
+  colorBack?: string;
+  colorFront?: string;
+};
+
+const { colorBack, colorFront } = Astro.props;
+---
+
+<canvas
+  id="shader-canvas"
+  class="fixed inset-0 -z-10 w-full h-full"
+  style="display: block;"
+  data-color-back={colorBack}
+  data-color-front={colorFront}
+></canvas>
+
+<script>
+  import { initShaderBackground } from "./shader-background";
+  const canvas = document.getElementById("shader-canvas") as HTMLCanvasElement;
+  if (canvas) {
+    const colorBack = canvas.dataset.colorBack || undefined;
+    const colorFront = canvas.dataset.colorFront || undefined;
+    initShaderBackground(canvas, colorBack, colorFront);
+  }
+</script>

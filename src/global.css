@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "@fontsource-variable/figtree";
+@import "@fontsource/instrument-serif";
+
+@theme {
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: "Figtree Variable", sans-serif;
+  --color-typography: rgb(206, 205, 195);
+  --color-typography-link: rgb(67, 133, 190);
+  --color-typography-subtle: rgb(135, 133, 128);
+}
+
+.prose strong {
+  color: var(--color-typography);
+}
+
+.prose a {
+  color: var(--color-typography-link);
+}

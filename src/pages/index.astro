@@ -1,16 +1,148 @@
 ---
+import "../global.css";
+import EventSection from "../components/event-section.astro";
+import ShaderBackground from "../components/shader-background.astro";
+import type { Event } from "../components/event-section.astro";
 
+const EVENTS: Event[] = [
+  {
+    imageUrl: "https://i.imgur.com/n8Q33Rw.gif",
+    type: "UPCOMING",
+    title: "entendiendo tendencias de JS con grafos",
+    org: "indies.cl",
+    startDate: "2025-12-10T19:00:00-03:00",
+    content: `
+charla técnica. si programan en cualquier cosa relacionada con la web, va a ser **súper útil**
+
+entendiendo **tendencias de JS con grafos**  
+cómo se relacionan los grafos con la dirección a la que se mueve el ecosistema de javascript  
+por qué a **gel** (ex **edgedb**, adquirida por **vercel**) le fue mal como base de datos, la receta que hizo a **tailwind** tan popular o por qué **next.js** pasó al **app router**  
+por **benja vicente**, ingeniero en **zerofox**
+
+**diciembre 10. 7 pm**  
+en el discord de **indies.cl**  
+[https://discord.gg/qRpUrMFRFr](https://discord.gg/qRpUrMFRFr)
+
+estamos buscando charlas para el discord. si tienes algo entretenido y útil que compartir, eres bienvenida/o a dar una charla técnica, de ventas, diseño, whatever
+`,
+  },
+  {
+    imageUrl: "https://i.imgur.com/OIqKR1f.jpeg",
+    content: `🚨 Streaming Pitch Day Los Lagos 2025 (Demo Day de inversiones) 🚨
+
+🎫 Inscríbete gratis: https://www.innovacionloslagos.com/pitch/
+
+Conecta en vivo con las startups que presentarán soluciones en biotecnología, IA, sostenibilidad, tratamiento de aguas y más, frente a un panel de inversionistas y corporativos.
+
+📅 ¿Cuándo y dónde?
+Jueves 11 de diciembre, vía Google Meet (streaming).
+
+⏰ Horario
+09:00 a 12:00 hrs 🇨🇱
+
+Si te interesa ver buenas oportunidades que están naciendo desde regiones, ¡nos vemos en vivo en el Pitch Day! 💻`,
+    startDate: "2025-12-11T09:00:00-03:00",
+    org: "Centro de Innovación Regional Los Lagos",
+    type: "UPCOMING",
+    title: "Streaming Pitch Day Los Lagos 2025 (Demo Day de inversiones)",
+  },
+  {
+    startDate: "2025-12-10T13:00:00-03:00",
+    imageUrl: "https://i.imgur.com/9HC5t8Y.jpeg",
+    title: "FunnelWeek",
+    org: "growclub",
+    content: `🚨 Invitación para fundadores 🚨
+
+🎫 Inscríbete gratis: https://evento.growclub.io/inscripcion-webinar-funnel-week?utm_source=indies
+
+Construye tu primer embudo de confianza: Anuncios, webinars y prospección para ganar en 2026.
+
+Tres días para entender cómo combinar anuncios, webinars y prospección en un solo motor de adquisición de clientes que nutra y eduque antes de vender.
+
+¿Cuándo y dónde?
+📅 9 - 11 de diciembre, vía Zoom.
+
+¿Horarios?
+⏰ 10:00 am 🇲🇽
+⏰ 11:00 am 🇨🇴🇵🇪🇪🇨
+⏰ 12:00 pm 🇺🇸🇻🇪
+⏰ 13:00 pm 🇨🇱🇦🇷
+
+Nos vemos en vivo!`,
+    type: "UPCOMING",
+  },
+  {
+    startDate: "2025-12-03T19:00:00-03:00",
+    imageUrl: "https://i.imgur.com/TIqh199.jpeg",
+    title:
+      "Emprendiendo en una era de cambios y diversos escenarios de industria",
+    org: "Product Tank Santiago",
+    type: "PAST",
+    content: `Hola!! Hoy estamos co-organizando el Product Tank Santiago en la casa de Markip donde realizaremos el lanzamiento oficial de nuestro Podcast Dentro del Juego.
+
+SPEAKERS 
+
+👤 Cristián Andrés Arredondo Rodriguez
+Más de 15 años rompiendo esquemas en inversiones, estrategia y crecimiento. Hoy CIO en Grupo Zumar y Cofundador de Amifactor..
+
+👤 Maria Mercedes Romero
++10 años construyendo productos digitales que de verdad escalan. Hoy Head of Product & Growth en Retorna.
+
+Habrán Pizzas y cervezas🙌
+
+📍 MARKIP – Manquehue Norte 882, Las Condes
+🕖 Miércoles 03 de diciembre - 19:00 hrs (HOY)
+🪪 Lleva tu DNI
+🎟️ Cupos limitados
+
+Link de registro:  https://www.meetup.com/producttank-cl/events/312181159/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link&utm_version=v2&member_id=402906990`,
+  },
+];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Mmm</title>
+  </head>
+  <body class="text-typography">
+    <ShaderBackground
+      colorBack="rgb(16, 15, 15)"
+      colorFront="rgb(52, 51, 49)"
+    />
+    <main class="space-y-4 text-lg relative z-10 max-w-2xl mx-auto p-4">
+      <div>
+        <h1 class="text-2xl font-serif">eventos chile</h1>
+        <h2 class="text-pretty text-typography-subtle text-sm">
+          calendario sobre tecnología, emprendimiento y startups
+        </h2>
+        <p class="text-pretty text-typography-subtle text-sm">
+          estos eventos vienen del <a
+            href="https://chat.whatsapp.com/CsWnAPY4knV7xdf3Za22hx?mode=hqrt3"
+            class="text-typography-link"
+            target="_blank"
+            rel="noopener noreferrer">grupo de whatsapp eventos en chile</a
+          >
+          <br /> si tienes una comunidad y organizas eventos, mándale un mensaje
+          a <a
+            href="https://www.linkedin.com/in/pup/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-typography-link"
+          >
+            reno
+          </a>
+        </p>
+      </div>
+      <EventSection
+        title="estás a tiempo de asistir"
+        events={EVENTS}
+        type="UPCOMING"
+      />
+      <EventSection title="ya pasó" events={EVENTS} type="PAST" />
+    </main>
+  </body>
 </html>

@@ -38,17 +38,21 @@ const sortedEvents = [...events].sort((a, b) => {
     {
       sortedEvents.map((event) => (
         <article class="bg-black/30 p-4 grid sm:grid-cols-2 gap-4 relative overflow-hidden">
-          <img src={event.imageUrl} alt={event.title} />
-          <div class="space-y-2">
+          <img
+            class="w-full h-48 object-cover sm:h-auto sm:object-contain rounded-md"
+            src={event.imageUrl}
+            alt={event.title}
+          />
+          <div class="space-y-2 min-w-0">
             <div class="text-sm text-white/50">
               <TimeLeft startDate={event.startDate} client:load />
             </div>
-            <h1 class="text-3xl leading-8 font-serif font-semibold text-pretty">
+            <h1 class="text-3xl leading-8 font-serif font-semibold text-pretty break-words">
               {event.title}
             </h1>
             <p class="text-sm text-white/50">{event.org}</p>
             <div
-              class="prose prose-sm  max-w-none leading-5 text-typography line-clamp-4 sm:line-clamp-3"
+              class="prose prose-sm max-w-none leading-5 text-typography line-clamp-4 sm:line-clamp-3 break-words"
               set:html={marked.parse(event.content)}
             />
             <div class="flex justify-end mt-2">

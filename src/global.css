@@ -9,6 +9,7 @@
   --color-typography: rgb(206, 205, 195);
   --color-typography-link: rgb(67, 133, 190);
   --color-typography-subtle: rgb(135, 133, 128);
+  --color-background: rgb(16, 15, 15);
 }
 
 .prose strong {

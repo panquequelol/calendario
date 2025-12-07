@@ -6,7 +6,7 @@ import { TimeLeft } from "./time-left";
 export function EventDialog({ event }: { event: Event }) {
   return (
     <Dialog.Root>
-      <Dialog.Trigger className="text-right text-typography-link hover:bg-black/50 duration-200 hover:cursor-pointer">
+      <Dialog.Trigger className="bg-typography-link/40 text-white px-4 py-2 text-sm hover:bg-black/50 duration-200 hover:cursor-pointer">
         ver más
       </Dialog.Trigger>
       <Dialog.Portal>

@@ -8,7 +8,6 @@ export type Event = {
   imageUrl: string;
   title: string;
   content: string;
-  type: EventType;
   org: string;
   startDate: string;
 };
@@ -16,47 +15,48 @@ export type Event = {
 type Props = {
   title: string;
   events: Event[];
-  type: EventType;
 };
 
-type EventType = "UPCOMING" | "PAST";
+const { title, events } = Astro.props;
+const now = new Date();
+const sortedEvents = [...events].sort((a, b) => {
+  const dateA = new Date(a.startDate);
+  const dateB = new Date(b.startDate);
+  const aPast = dateA.getTime() < now.getTime();
+  const bPast = dateB.getTime() < now.getTime();
 
-const { title, events, type } = Astro.props;
+  if (!aPast && bPast) return -1;
+  if (aPast && !bPast) return 1;
+  if (!aPast && !bPast) return dateA.getTime() - dateB.getTime();
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <section>
-  <h2 class="text-2xl font-serif">{title}</h2>
+  <h2 class="text-3xl font-serif">{title}</h2>
   <div class="grid gap-4">
     {
-      events
-        .filter((event) => event.type === type)
-        .sort(
-          (a, b) =>
-            new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
-        )
-        .map((event) => (
-          <article class="bg-black/30 p-4 grid grid-cols-2 gap-4">
-            <img src={event.imageUrl} alt={event.title} />
-            <div class="space-y-2 ">
-              <div>
-                <div class="text-xs text-white/50">
-                  <TimeLeft startDate={event.startDate} client:load />
-                </div>
-                <h1 class="text-2xl leading-6 font-serif font-semibold text-pretty">
-                  {event.title}
-                </h1>
-                <p class="text-xs text-white/50">{event.org}</p>
-              </div>
-              <div
-                class="prose prose-sm  max-w-none leading-5 text-typography line-clamp-3"
-                set:html={marked.parse(event.content)}
-              />
-              <div class="flex justify-end">
-                <EventDialog client:load event={event} />
-              </div>
+      sortedEvents.map((event) => (
+        <article class="bg-black/30 p-4 grid sm:grid-cols-2 gap-4 relative overflow-hidden">
+          <img src={event.imageUrl} alt={event.title} />
+          <div class="space-y-2">
+            <div class="text-sm text-white/50">
+              <TimeLeft startDate={event.startDate} client:load />
             </div>
-          </article>
-        ))
+            <h1 class="text-3xl leading-8 font-serif font-semibold text-pretty">
+              {event.title}
+            </h1>
+            <p class="text-sm text-white/50">{event.org}</p>
+            <div
+              class="prose prose-sm  max-w-none leading-5 text-typography line-clamp-4 sm:line-clamp-3"
+              set:html={marked.parse(event.content)}
+            />
+            <div class="flex justify-end mt-2">
+              <EventDialog client:load event={event} />
+            </div>
+          </div>
+        </article>
+      ))
     }
   </div>
 </section>

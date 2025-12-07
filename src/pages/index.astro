@@ -7,7 +7,6 @@ import type { Event } from "../components/event-section.astro";
 const EVENTS: Event[] = [
   {
     imageUrl: "https://i.imgur.com/n8Q33Rw.gif",
-    type: "UPCOMING",
     title: "entendiendo tendencias de JS con grafos",
     org: "indies.cl",
     startDate: "2025-12-10T19:00:00-03:00",
@@ -43,7 +42,6 @@ Jueves 11 de diciembre, vía Google Meet (streaming).
 Si te interesa ver buenas oportunidades que están naciendo desde regiones, ¡nos vemos en vivo en el Pitch Day! 💻`,
     startDate: "2025-12-11T09:00:00-03:00",
     org: "Centro de Innovación Regional Los Lagos",
-    type: "UPCOMING",
     title: "Streaming Pitch Day Los Lagos 2025 (Demo Day de inversiones)",
   },
   {
@@ -69,7 +67,6 @@ Tres días para entender cómo combinar anuncios, webinars y prospección en un 
 ⏰ 13:00 pm 🇨🇱🇦🇷
 
 Nos vemos en vivo!`,
-    type: "UPCOMING",
   },
   {
     startDate: "2025-12-03T19:00:00-03:00",
@@ -77,7 +74,6 @@ Nos vemos en vivo!`,
     title:
       "Emprendiendo en una era de cambios y diversos escenarios de industria",
     org: "Product Tank Santiago",
-    type: "PAST",
     content: `Hola!! Hoy estamos co-organizando el Product Tank Santiago en la casa de Markip donde realizaremos el lanzamiento oficial de nuestro Podcast Dentro del Juego.
 
 SPEAKERS 
@@ -103,10 +99,18 @@ Link de registro:  https://www.meetup.com/producttank-cl/events/312181159/?utm_m
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💙</text></svg>"
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Mmm</title>
+    <meta
+      name="description"
+      content="calendario de eventos sobre startups y tecnología. ¿quieres comer pizza gratis?"
+    />
+    <meta property="og:image" content="https://i.imgur.com/Q1OPc5t.png" />
+    <title>eventos chile. tecnología, emprendimiento y startups</title>
   </head>
   <body class="text-typography">
     <ShaderBackground
@@ -115,16 +119,16 @@ Link de registro:  https://www.meetup.com/producttank-cl/events/312181159/?utm_m
     />
     <main class="space-y-4 text-lg relative z-10 max-w-2xl mx-auto p-4">
       <div>
-        <h1 class="text-2xl font-serif">eventos chile</h1>
-        <h2 class="text-pretty text-typography-subtle text-sm">
+        <h1 class="text-3xl font-serif">eventos chile</h1>
+        <h2 class="text-pretty text-typography-subtle mb-4">
           calendario sobre tecnología, emprendimiento y startups
         </h2>
-        <p class="text-pretty text-typography-subtle text-sm">
-          estos eventos vienen del <a
+        <p class="text-pretty text-typography-subtle">
+          la información viene de <a
             href="https://chat.whatsapp.com/CsWnAPY4knV7xdf3Za22hx?mode=hqrt3"
             class="text-typography-link"
             target="_blank"
-            rel="noopener noreferrer">grupo de whatsapp eventos en chile</a
+            rel="noopener noreferrer">eventos en chile (grupo de whatsapp)</a
           >
           <br /> si tienes una comunidad y organizas eventos, mándale un mensaje
           a <a
@@ -137,12 +141,7 @@ Link de registro:  https://www.meetup.com/producttank-cl/events/312181159/?utm_m
           </a>
         </p>
       </div>
-      <EventSection
-        title="estás a tiempo de asistir"
-        events={EVENTS}
-        type="UPCOMING"
-      />
-      <EventSection title="ya pasó" events={EVENTS} type="PAST" />
+      <EventSection title="calendario" events={EVENTS} />
     </main>
   </body>
 </html>

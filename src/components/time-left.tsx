@@ -64,5 +64,5 @@ export function TimeLeft({ startDate }: Props) {
     }, ${seconds} ${seconds === 1 ? "segundo" : "segundos"}!`;
   };
 
-  return <p>{isPast ? "ya fue" : formatMessage()}</p>;
+  return <p>{isPast ? "ya pasó. te lo perdiste" : formatMessage()}</p>;
 }
